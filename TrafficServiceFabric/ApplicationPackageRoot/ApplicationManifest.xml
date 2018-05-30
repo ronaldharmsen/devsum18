@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="TrafficServiceFabricType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="Frontend_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="TrafficApi_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="TrafficApi_PartitionCount" DefaultValue="1" />
+    <Parameter Name="TrafficApi_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="VehicleActorService_PartitionCount" DefaultValue="10" />
+    <Parameter Name="VehicleActorService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="VehicleActorService_TargetReplicaSetSize" DefaultValue="3" />
+  </Parameters>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="FrontendPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="TrafficApiPkg" ServiceManifestVersion="1.0.0" />
+    <ConfigOverrides />
+  </ServiceManifestImport>
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName="VehicleActorServicePkg" ServiceManifestVersion="1.0.0" />
+  </ServiceManifestImport>
+  <DefaultServices>
+    <Service Name="Frontend" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="FrontendType" InstanceCount="[Frontend_InstanceCount]">
+        <SingletonPartition />
+      </StatelessService>
+    </Service>
+    <Service Name="TrafficApi" ServicePackageActivationMode="ExclusiveProcess">
+      <StatefulService ServiceTypeName="TrafficApiType" TargetReplicaSetSize="[TrafficApi_TargetReplicaSetSize]" MinReplicaSetSize="[TrafficApi_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[TrafficApi_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="VehicleActorService" GeneratedIdRef="f11fdf4e-4987-4e2c-8d94-600d532e2a9a|Persisted">
+      <StatefulService ServiceTypeName="VerhicleActorServiceType" TargetReplicaSetSize="[VehicleActorService_TargetReplicaSetSize]" MinReplicaSetSize="[VehicleActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[VehicleActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+  </DefaultServices>
+</ApplicationManifest>

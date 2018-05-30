@@ -1,0 +1,17 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2>Registered licenseplates</h2>
+        <ul>
+            @foreach (var lp in Model.LicensePlates)
+            {
+                <li>@lp</li>
+            }
+        </ul>
+    </div>
+</div>
