@@ -29,7 +29,8 @@ namespace Frontend.Pages
 
         private async Task<string> ResolveApiAddress()
         {
-            
+            //Warning: Very simplistic/optimistic implementation
+            //This demo uses only 1 partition. Other stateful services might have more..
             ServicePartitionResolver resolver = ServicePartitionResolver.GetDefault();            
             ResolvedServicePartition partition =
                 await resolver.ResolveAsync(

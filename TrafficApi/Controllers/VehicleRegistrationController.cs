@@ -22,6 +22,7 @@ namespace TrafficApi.Controllers
         {
             this.stateManager = stateManager;
         }
+
         [HttpGet]
         public async Task<IEnumerable<string>> Get()
         {
@@ -69,7 +70,7 @@ namespace TrafficApi.Controllers
                 IVehicleActor proxy = ActorProxy.Create<IVehicleActor>(
                     actorId, new Uri("fabric:/TrafficServiceFabric/VehicleActorService"));
 
-                await proxy.SetCountAsync(0, CancellationToken.None);
+                await proxy.AddRegistrationByCameraAsync(registration.TimeStamp);
             }
             catch (TimeoutException)
             {

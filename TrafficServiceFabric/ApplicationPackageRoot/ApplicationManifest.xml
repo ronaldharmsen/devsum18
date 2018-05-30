@@ -8,6 +8,9 @@
     <Parameter Name="VehicleActorService_PartitionCount" DefaultValue="10" />
     <Parameter Name="VehicleActorService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="VehicleActorService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="FineProcessingActorService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="FineProcessingActorService_MinReplicaSetSize" DefaultValue="1" />
+    <Parameter Name="FineProcessingActorService_TargetReplicaSetSize" DefaultValue="1" />
   </Parameters>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="FrontendPkg" ServiceManifestVersion="1.0.0" />
@@ -31,9 +34,14 @@
         <UniformInt64Partition PartitionCount="[TrafficApi_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
-    <Service Name="VehicleActorService" GeneratedIdRef="f11fdf4e-4987-4e2c-8d94-600d532e2a9a|Persisted">
-      <StatefulService ServiceTypeName="VerhicleActorServiceType" TargetReplicaSetSize="[VehicleActorService_TargetReplicaSetSize]" MinReplicaSetSize="[VehicleActorService_MinReplicaSetSize]">
+    <Service Name="VehicleActorService" GeneratedIdRef="9224c21f-2afb-45d2-bcdb-b9ef7938e156|Persisted">
+      <StatefulService ServiceTypeName="VehicleActorServiceType" TargetReplicaSetSize="[VehicleActorService_TargetReplicaSetSize]" MinReplicaSetSize="[VehicleActorService_MinReplicaSetSize]">
         <UniformInt64Partition PartitionCount="[VehicleActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
+      </StatefulService>
+    </Service>
+    <Service Name="FineProcessingActorService" GeneratedIdRef="b06dddf5-f2d6-4fe7-bd27-dfbc751d0b2e|None">
+      <StatefulService ServiceTypeName="FineActorServiceType" TargetReplicaSetSize="[FineProcessingActorService_TargetReplicaSetSize]" MinReplicaSetSize="[FineProcessingActorService_MinReplicaSetSize]">
+        <UniformInt64Partition PartitionCount="[FineProcessingActorService_PartitionCount]" LowKey="-9223372036854775808" HighKey="9223372036854775807" />
       </StatefulService>
     </Service>
   </DefaultServices>

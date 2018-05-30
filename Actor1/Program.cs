@@ -4,6 +4,7 @@ using System.Fabric;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.ServiceFabric.Actors.Runtime;
+using VehicleActorService;
 
 namespace VehicleActor
 {
@@ -13,7 +14,10 @@ namespace VehicleActor
         {
             try
             {
-                ActorRuntime.RegisterActorAsync<VerhicleActor> (
+                ActorRuntime.RegisterActorAsync<VehicleActor> (
+                   (context, actorType) => new ActorService(context, actorType)).GetAwaiter().GetResult();
+
+                ActorRuntime.RegisterActorAsync<FineActor>(
                    (context, actorType) => new ActorService(context, actorType)).GetAwaiter().GetResult();
 
                 Thread.Sleep(Timeout.Infinite);

@@ -12,8 +12,6 @@ namespace VehicleActor.Interfaces
 {
     public interface IVehicleActor : IActor
     {
-        Task<int> GetCountAsync(CancellationToken cancellationToken);
-
-        Task SetCountAsync(int count, CancellationToken cancellationToken);
+        Task AddRegistrationByCameraAsync(DateTime timestamp);
     }
 }
