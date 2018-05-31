@@ -15,3 +15,21 @@
         </ul>
     </div>
 </div>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <form method="post">
+            <div class="form-group">
+                <label for="licenseplate">License plate</label>
+                <input type="text" name="licensePlate" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label for="timestamp">Timestamp</label>
+                <input type="text" name="timestamp" class="form-control" value="@DateTime.UtcNow" />
+            </div>
+            <button type="submit" class="btn btn-primary">Fake camera registration</button>
+        </form>
+    </div>
+</div>
