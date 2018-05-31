@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Actor1.Interfaces\VehicleActor.Interfaces.csproj" />
+    <ProjectReference Include="..\VehicleActor.Interfaces\VehicleActor.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

@@ -32,7 +32,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Actor1\VehicleActorService.csproj" />
+    <ProjectReference Include="..\VehicleActorService\VehicleActorService.csproj" />
     <ProjectReference Include="..\Frontend\Frontend.csproj" />
     <ProjectReference Include="..\TrafficApi\TrafficApi.csproj" />
   </ItemGroup>
