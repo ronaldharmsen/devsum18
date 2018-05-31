@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  administrativeapi:
+    image: ${DOCKER_REGISTRY}administrativeapi
+    build:
+      context: .
+      dockerfile: AdministrativeAPI\Dockerfile
