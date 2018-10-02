@@ -1,0 +1,17 @@
+﻿@page
+@model FinesModel
+@{
+    ViewData["Title"] = "Fines";
+}
+<h2>@ViewData["Title"]</h2>
+<div class="row">
+    <div class="col-md-3">
+        <h2>Registered licenseplates</h2>
+        <ul>
+            @foreach (var f in Model.Fines)
+            {
+                <li>@f.LicensePlate - @f.Amount</li>
+            }
+        </ul>
+    </div>
+</div>

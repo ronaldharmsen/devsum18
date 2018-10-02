@@ -29,6 +29,8 @@
     <None Include="Scripts\Deploy-FabricApplication.ps1" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ApplicationPackageRoot\AdministrativeAPIPkg\Config\Settings.xml" />
+    <Content Include="ApplicationPackageRoot\AdministrativeAPIPkg\ServiceManifest.xml" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
